@@ -18,9 +18,9 @@ make_fitted_line_plot <- function() {
   geom_line(data=plotting_data, aes(x=x, y=fitted_values))
 }
 
-make_fitted_polynomial_plot <- function(d, alpha) {
-  plotting_data <- make_plotting_data()
-  plotting_data$fitted_values <- make_fitted_polynomial_values(d=d)
+make_fitted_polynomial_plot <- function(d, alpha=1, low=0, high=1) {
+  plotting_data <- make_plotting_data(low=low, high=high)
+  plotting_data$fitted_values <- make_fitted_polynomial_values(d=d, low=low, high=high)
   geom_line(data=plotting_data, aes(x=x, y=fitted_values), alpha=alpha)
 }
 

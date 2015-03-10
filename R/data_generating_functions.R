@@ -10,8 +10,8 @@ make_training_data <- function(signal=true_signal) {
   training_data
 }
 
-make_plotting_data <- function() {
-  plotting_data <- data.frame(x=1:100/100)
+make_plotting_data <- function(low=.02, high=1) {
+  plotting_data <- data.frame(x=seq(low, high, length.out=100))
   plotting_data
 }
 
@@ -51,11 +51,11 @@ make_fitted_spline_values <- function(df) {
   y_hat
 }
 
-make_fitted_polynomial_values <- function(d) {
+make_fitted_polynomial_values <- function(d, low=0, high=1) {
   training_data <- make_training_data()
   training_data <- make_polynomial_data(d=d, training_data)
   line_model <- lm(y ~ ., data=training_data)
-  plotting_data <- make_plotting_data()
+  plotting_data <- make_plotting_data(low, high)
   plotting_data <- make_polynomial_data(d=d, plotting_data)
   y_hat <- predict(line_model, newdata=plotting_data)
   y_hat

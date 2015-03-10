@@ -9,10 +9,6 @@ paste_paths <- function(...) {
   paste(..., sep='/')
 }
 
-true_signal <- function(x) {
-  x*x*x*(x-1) + 2*(1/(1+exp(-.5*(x-.5)))) - 3.5*(x > .2)*(x < .5)*(x - .2)*(x - .5)
-}
-
 source(paste_paths(project_path, "R", "true_signal.R"))
 source(paste_paths(project_path, "R", "data_generating_functions.R"))
 source(paste_paths(project_path, "R", "plot_generating_functions.R"))
@@ -35,13 +31,25 @@ ggsave(paste_paths(project_path, "plots", "fitted_line.png"), plot=p)
 
 # overfit_polynomial.png
 # High degree polynomial overfit to data
-p <- ggplot() + make_training_data_plot() + make_fitted_polynomial_plot(d=50)
+p <- ggplot() + make_training_data_plot() + make_fitted_polynomial_plot(d=50, low=.025, high=1)
 ggsave(paste_paths(project_path, "plots", "overfit_polynomial.png"), plot=p)
 
 # cubic_fit_to_training.png
 # A cubic polynomial fit to the training data
 p <- ggplot() + make_training_data_plot() + make_fitted_polynomial_plot(d=3)
 ggsave(paste_paths(project_path, "plots", "cubic_fit_to_training.png"), plot=p)
+
+# cubic_endpoint_behaviour.png
+# Cubic fit extrapolated past the data
+p <- (ggplot() + make_training_data_plot() + make_fitted_polynomial_plot(d=3, low=-.2, high=1.2)
+      + scale_x_continuous(limits=c(-.2, 1.2))
+)
+ggsave(paste_paths(project_path, "plots", "cubic_endpoint_behaviour.png"), plot=p)
+
+# high_degree_endpoint_behaviour.png
+# High degree fit extrapolated past the data
+p <- ggplot() + make_training_data_plot() + make_fitted_polynomial_plot(d=50, low=0, high=1)
+ggsave(paste_paths(project_path, "plots", "high_degree_endpoint_behaviour.png"), plot=p)
 
 # cubics_fit_to_training.png
 # Two cubics fit to different versions of training data, demonstrating non
