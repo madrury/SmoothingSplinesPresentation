@@ -7,19 +7,31 @@ make_true_signal_plot <- function() {
   geom_line(data=true_signal_data, aes(x=x, y=y))
 }
 
-make_training_data_plot <- function() {
-  training_data <- make_training_data()
-  geom_point(data=training_data, aes(x=x, y=y))
+make_training_data_plot <- function(signal=true_signal, alpha=1) {
+  training_data <- make_training_data(signal)
+  geom_point(data=training_data, aes(x=x, y=y), alpha=alpha)
 }
 
 make_fitted_line_plot <- function() {
-  training_data <- make_training_data()
-  training_data$fitted_values <- make_fitted_line_values()
-  geom_line(data=training_data, aes(x=x, y=fitted_values))
+  plotting_data <- make_plotting_data()
+  plotting_data$fitted_values <- make_fitted_line_values()
+  geom_line(data=plotting_data, aes(x=x, y=fitted_values))
+}
+
+make_fitted_polynomial_plot <- function(d, alpha) {
+  plotting_data <- make_plotting_data()
+  plotting_data$fitted_values <- make_fitted_polynomial_values(d=d)
+  geom_line(data=plotting_data, aes(x=x, y=fitted_values), alpha=alpha)
+}
+
+make_fitted_polynomial_plot_big_hump <- function(d) {
+  plotting_data <- make_plotting_data()
+  plotting_data$fitted_values <- make_fitted_polynomial_values_big_hump(d=d)
+  geom_line(data=plotting_data, aes(x=x, y=fitted_values))
 }
 
 make_fitted_spline_plot <- function(df) {
-  training_data <- make_training_data()
-  training_data$fitted_values <- make_fitted_spline_values(df=df)
-  geom_line(data=training_data, aes(x=x, y=fitted_values))
+  plotting_data <- make_plotting_data()
+  plotting_data$fitted_values <- make_fitted_spline_values(df=df)
+  geom_line(data=plotting_data, aes(x=x, y=fitted_values))
 }
