@@ -1,0 +1,47 @@
+\section{The Problems With Polynomials}
+%
+\begin{frame}
+  Oftentimes choosing an appropriate degree polynomial will result in a  good looking fit:
+  \begin{figure}
+    \includegraphics[scale=0.08]{cubic_fit_to_training}
+  \end{figure}
+  Nonetheless, the class of polynomial functions has some properties undesirable for a candidate for general purpose smoothing.
+\end{frame}
+%
+\begin{frame}
+  Most obvious is the discrete nature of the classes $\mathcal{C}_d$: if a cubic smooth is underfit, while a quartic smooth is overfit, there is no where in the middle to go!
+\end{frame}
+%
+\begin{frame}
+  Less apparent is the \textbf{non-locality} of polynomial smoothers:
+  \begin{figure}
+    \includegraphics[scale=0.12]{cubics_fit_to_training}
+  \end{figure}
+\end{frame}
+%
+\begin{frame}
+  Here we have changed the training data only in a small interval, yet the fit to the data has degraded in far away places.
+  \begin{figure}
+    \includegraphics[scale=0.08]{cubics_fit_to_training}
+  \end{figure}
+  This may be reasonable behavior in some cases, but is undesirable for a general method.
+\end{frame}
+%
+\begin{frame}
+  Finally, polynomial fits often show extreme edge effects, as they extrapolate a high degree curve beyond the bounds of the data:
+   \begin{figure}
+    \includegraphics[scale=0.1]{cubic_endpoint_behaviour}
+  \end{figure}
+\end{frame}
+%
+\begin{frame}
+  The effect can be extreme for high dimensional fits:
+  \begin{figure}
+    \includegraphics[scale=0.1]{high_degree_endpoint_behaviour}
+  \end{figure}
+\end{frame}
+%
+\begin{frame}
+  The remainder of this talk will motivate and outline a general purpose method that resolves all of these issues.
+\end{frame}	
+
