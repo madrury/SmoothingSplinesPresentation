@@ -15,10 +15,14 @@ make_plotting_data <- function(low=.02, high=1) {
   plotting_data
 }
 
+make_interpolation_data <- function() {
+  data.frame(x=c(.2, .4, .6, .8), y=c(.5, .75, .25, .6))
+}
+
 make_polynomial_data <- function(d, raw_training_data) {
   if(d < 2) {stop("Degree must be 2 or larger.")}
   data <- raw_training_data
-  # Add higher degree columns
+  # Add higher degree columns x_2, x_3, ...
   for(i in 2:d) {
     this_col_nm <- paste("x", i, sep="_")
     prev_col_nm <- (
@@ -46,6 +50,13 @@ make_fitted_line_values <- function() {
 make_fitted_spline_values <- function(df) {
   training_data <- make_training_data()
   spline_model <- smooth.spline(x=training_data$x, y=training_data$y, df=df)
+  plotting_data <- make_plotting_data()
+  y_hat <- predict(spline_model, x=plotting_data$x)$y
+  y_hat
+}
+
+make_interpolating_spline_values <- function(data) {
+  spline_model <- smooth.spline(x=data$x, y=data$y, df=nrow(data))
   plotting_data <- make_plotting_data()
   y_hat <- predict(spline_model, x=plotting_data$x)$y
   y_hat

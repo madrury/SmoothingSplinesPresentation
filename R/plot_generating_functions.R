@@ -12,6 +12,11 @@ make_training_data_plot <- function(signal=true_signal, alpha=1) {
   geom_point(data=training_data, aes(x=x, y=y), alpha=alpha)
 }
 
+make_interpolating_data_plot <- function() {
+  interpolating_data <- make_interpolation_data()
+  geom_point(data=interpolating_data, aes(x=x, y=y, size=6), alpha=.5)
+}
+
 make_fitted_line_plot <- function() {
   plotting_data <- make_plotting_data()
   plotting_data$fitted_values <- make_fitted_line_values()

@@ -77,3 +77,8 @@ p <- (ggplot() + make_fitted_splines_plot(dfv=seq(2^.5, 20^.5, length.out=20)^2)
                + make_training_data_plot()
 )
 save_plot(p, "splines_of_increasing_roughness.png")
+
+# interpolating_spline.png
+# A natural spline interpolating four points
+p <- ggplot() + make_interpolating_spline_plot() + make_interpolating_data_plot()
+save_plot(p, "interpolating_spline.png")
