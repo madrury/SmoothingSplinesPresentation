@@ -70,3 +70,10 @@ save_plot(p, "cubics_fit_to_training.png")
 # Overfit curve superimposed on training data
 p <- ggplot() + make_fitted_spline_plot(df=30) + make_training_data_plot()
 save_plot(p, "overfit_curve.png")
+
+# splines_of_increasing_roughness.png
+# Various splines with increasing degrees of freedom overlayed on the data
+p <- (ggplot() + make_fitted_splines_plot(dfv=seq(2^.5, 20^.5, length.out=20)^2)
+               + make_training_data_plot()
+)
+save_plot(p, "splines_of_increasing_roughness.png")
