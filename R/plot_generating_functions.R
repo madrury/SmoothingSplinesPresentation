@@ -18,7 +18,7 @@ make_interpolating_data_plot <- function() {
 }
 
 make_interpolating_vlines_plot <- function() {
-  interpolating_data <- make_interpolsation_data()
+  interpolating_data <- make_interpolation_data()
   geom_vline(xintercept=interpolating_data$x, alpha=.25)
 }
 
@@ -54,8 +54,8 @@ make_fitted_spline_plot <- function(df) {
 make_fitted_splines_plot <- function(dfv) {
   plotting_data <- make_plotting_data()
   n_plots <- length(dfv)
-  alphas <- seq(0, 1, length.out=n_plots)^.5
-  p <- geom_blank()  # Additive identity for ggplot.
+  alphas <- .75*seq(0, 1, length.out=n_plots)^.5
+  p <- ggplot()  # Additive identity for ggplot.
   for(i in 1:n_plots) {
     plotting_data$fitted_values <- make_fitted_spline_values(df=dfv[i])
     p <- p + geom_line(data=plotting_data, aes(x=x, y=fitted_values), alpha=alphas[i])
