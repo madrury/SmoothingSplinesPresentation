@@ -17,6 +17,16 @@ make_interpolating_data_plot <- function() {
   geom_point(data=interpolating_data, aes(x=x, y=y, size=6), alpha=.5)
 }
 
+make_interpolating_vlines_plot <- function() {
+  interpolating_data <- make_interpolsation_data()
+  geom_vline(xintercept=interpolating_data$x, alpha=.25)
+}
+
+make_vertical_fill_plot <- function(xmin, xmax) {
+  d <- data.frame(xmin=xmin, xmax=xmax)
+  geom_rect(data=d, aes(xmin=xmin, xmax=xmax, ymin=-Inf, ymax=Inf), alpha=.2, fill="blue")
+}
+
 make_fitted_line_plot <- function() {
   plotting_data <- make_plotting_data()
   plotting_data$fitted_values <- make_fitted_line_values()

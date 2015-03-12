@@ -80,5 +80,29 @@ save_plot(p, "splines_of_increasing_roughness.png")
 
 # interpolating_spline.png
 # A natural spline interpolating four points
-p <- ggplot() + make_interpolating_spline_plot() + make_interpolating_data_plot()
+p <- (ggplot() + make_interpolating_spline_plot()
+               + make_interpolating_data_plot()
+)
 save_plot(p, "interpolating_spline.png")
+
+# linear_parts_of_spline.png
+# A natural interpolating spline with the linear part highlighted
+p <- (ggplot() + make_vertical_fill_plot(xmin=-Inf, xmax=.2)
+               + make_vertical_fill_plot(xmin=.8, xmax=Inf)
+               + make_interpolating_vlines_plot()
+               + make_interpolating_spline_plot()
+               + make_interpolating_data_plot()
+)
+save_plot(p, "linear_parts_of_spline.png")
+
+# cubic_parts_of_spline.png
+# A natural interpolating spline with the cubic parts highlighted
+p <- (ggplot() + make_vertical_fill_plot(xmin=.2, xmax=.4)
+      + make_vertical_fill_plot(xmin=.4, xmax=.6)
+      + make_vertical_fill_plot(xmin=.6, xmax=.8)
+      + make_interpolating_vlines_plot()
+      + make_interpolating_spline_plot()
+      + make_interpolating_data_plot()
+)
+save_plot(p, "cubic_parts_of_spline.png")
+
