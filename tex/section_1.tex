@@ -2,10 +2,10 @@
 %
 \begin{frame}
   \begin{figure}
-    \includegraphics[scale=0.08]{training_data}
+    \includegraphics[scale=0.1]{training_data}
   \end{figure}
   Suppose we have some one dimensional data:
-  $$\mathcal(D) = \left\{ (x_i, y_i) \mid i = 1,2,\ldots,N \right\}$$
+  $$\mathcal{D} = \left\{ (x_i, y_i) \mid i = 1,2,\ldots,N \right\}$$
 \end{frame}
 %
 \begin{frame}
@@ -34,10 +34,14 @@ recovers classic linear regression.
 \end{frame}
 %
 \begin{frame}
-  \begin{figure}
-    \includegraphics[scale=0.1]{fitted_line}
-  \end{figure}
-  There is a clear issue with the linear regression fit to our sample data set: there are places where \textbf{all} the data is far away from the fitted line.
+  \begin{columns}
+    \column{.6\textwidth}
+      \begin{figure}
+        \includegraphics[scale=0.1]{fitted_line}
+      \end{figure}
+    \column{.4\textwidth}
+      There is a clear issue with the linear regression fit to our sample data set: there are places where \textbf{all} the data is far away from the fitted line.
+  \end{columns}
 \end{frame}
 %
 \begin{frame}
@@ -52,17 +56,21 @@ recovers classic linear regression.
 \end{frame}
 %
 \begin{frame}
+  \begin{columns}
+    \column{.6\textwidth}
+      \begin{figure}
+        \includegraphics[scale=0.1]{overfit_polynomial}
+      \end{figure}
+    \column{.4\textwidth}
   Here we fit by choosing from $\mathcal{C}_{50}$, fiftieth degree polynomials:
-  \begin{figure}
-    \includegraphics[scale=0.12]{overfit_polynomial}
-  \end{figure}
+  \end{columns}
 \end{frame}
 %
 \begin{frame}
   \begin{figure}
-    \includegraphics[scale=0.08]{overfit_polynomial}
+    \includegraphics[scale=0.1]{overfit_polynomial}
   \end{figure}
-  Here the curve goes out of its way to stay near small clusters of data points - it is likely that \textbf{new} data will often be in different places, and hence far away from the fitted curve.
+  The curve goes out of its way to stay near small clusters of data points - it is likely that \textbf{new} data will often be in different places, and hence far away from the fitted curve.
 \end{frame}
 %
 \begin{frame}
