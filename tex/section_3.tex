@@ -1,0 +1,176 @@
+\section{Curves of Minimum Roughness}
+%
+%
+\begin{frame}
+  Let's begin by answering the following:
+  \begin{block}{Question}
+    How can we tell the difference between the high bias and high varaince case using a measurement taken on the curve \textbf{only}.
+  \end{block}
+  Clearly this can only be truly answered by referencing both the curve and the data, but let's put that aside for the moment.
+\end{frame}
+%
+%
+\begin{frame}
+  \begin{columns}
+    \column{.75\textwidth}
+      \begin{figure}
+        \includegraphics[scale=0.12]{fitted_line}
+      \end{figure}
+    \column{.25\textwidth}
+      The curve has no bends, making it difficult to stay close to the data.
+  \end{columns}
+\end{frame}
+%
+%
+\begin{frame}
+  \begin{columns}
+    \column{.75\textwidth}
+      \begin{figure}
+        \includegraphics[scale=0.12]{overfit_polynomial}
+      \end{figure}
+    \column{.25\textwidth}
+      The curve is \textbf{too} bendy, allowing it to stay too close to the data.
+  \end{columns}
+\end{frame}
+%
+%
+\begin{frame}
+  Bendyness of a curve is an informal notion that roughly corresponds to the total ammount that the curve changes direction.
+\end{frame}
+%
+%
+\begin{frame}
+  \begin{block}{Definition}
+    The \textbf{roughness} of a curve (defined by a function $f(x)$) is defined by:
+    $$ \mathcal{R}(g) = \int (g''(x))^2 $$
+  \end{block}
+  The limits of integration are often clear from context.
+\end{frame}
+%
+%
+\begin{frame}
+  The roughness measure can be used to solve out first issue, for we can now state, and concievably solve, the constrained optimization problem:
+  \begin{block}{Problem: Constrained Roughness}
+    $$ f_R^* = \argmin_{g} \left\{ \sum_i (x_i - g(x_i))^2 \mid \mathcal{R}(g) = R \right\} $$
+  \end{block}
+  I.e., find the best fit to the data amongst all curves \textit{of a given roughness}.
+\end{frame}
+%
+%
+\begin{frame}
+  \begin{columns}
+    \column{.75\textwidth}
+      \begin{figure}
+        \includegraphics[scale=0.12]{splines_of_increasing_roughness}
+      \end{figure}
+    \column{.25\textwidth}
+      Here we've solved the above optimization problem for various values of $R$.
+  \end{columns}
+\end{frame}
+%
+%
+\begin{frame}
+  \begin{columns}
+    \column{.75\textwidth}
+      \begin{figure}
+        \includegraphics[scale=0.12]{splines_of_increasing_roughness}
+      \end{figure}
+    \column{.25\textwidth}
+      The resulting curves vary continuously with the roughness, validating that this innovation solves the discreteness issue.
+  \end{columns}
+\end{frame}
+%
+%
+\begin{frame}
+  As is usual when working with optimization problems, while the constrained statement of the problem is conceptually attractive, the unconstrained version is more tractable to mathematical analysis:
+  \begin{block}{Problem: Unonstrained, Roughness Penalty}
+    $$ f_{\lambda}^* = \argmin_{g} \left\{ \sum_i (x_i - g(x_i))^2 + \lambda \int (g'')^2 \right\} $$
+  \end{block}
+\end{frame}
+%
+%
+\begin{frame}
+  It seems that, to solve the unconstrained problem, a vast universe of curves must be considered, rendering it impossible to attack by usual methods.  In fact...
+\end{frame}
+%
+%
+\begin{frame}
+  ...a miracle occurs:
+  \begin{block}{Miracle (Characterization of Optima)}
+    All solutions to the unconstrained roughness penalty problem are \textbf{Natural Splines},
+with knots at some subsequence of the data points.
+  \end{block}
+
+\end{frame}
+%
+%
+\begin{frame}
+  \begin{block}{Definition}
+    A \textbf{natural spline} with knots at the points $x_1, x_2, \ldots, x_n$ is a curve with the following properties:
+  \end{block}
+\end{frame}
+%
+%
+\begin{frame}
+  \begin{figure}
+    \includegraphics[scale=0.12]{linear_parts_of_spline}
+  \end{figure}
+  The curve is linear beyond the boundary knots (the leftmost and rightmost knots).
+\end{frame}
+%
+%
+\begin{frame}
+  \begin{figure}
+    \includegraphics[scale=0.12]{cubic_parts_of_spline}
+  \end{figure}
+  The curve is cubic in each region between two knots.
+\end{frame}
+%
+%
+\begin{frame}
+  At the knots, the curve is continuous, has a continuous first derivative, and a continuous second derivative:
+  $$ \lim_{x \goesto x_i -} g(x) =\lim_{x \goesto x_i +} g(x) $$
+  $$ \lim_{x \goesto x_i -} g'(x) =\lim_{x \goesto x_i +} g'(x) $$
+  $$ \lim_{x \goesto x_i -} g''(x) =\lim_{x \goesto x_i +} g''(x) $$
+\end{frame}
+%
+%
+\begin{frame}
+  We wil refer to the collection of all natural splines with a specified sequence of knots as ${\natsplines}$
+\end{frame}
+%
+%
+\begin{frame}
+  Why are solutions to the penalized roughness problem natural splines, when at first sight they could be anything at all?
+\end{frame}
+%
+%
+\begin{frame}
+  \begin{block}{Hint}
+    Amongst all points that \textbf{interpolate} a set of data points, the unique natural spline has the minimum roughness.
+  \end{block}
+\end{frame}
+%
+%
+\begin{frame}
+  \begin{block}{Intuition for Miracle}
+    Given a proposed solution to:
+    $$ f_{\lambda}^* = \argmin_{g} \left\{ \sum_i (x_i - g(x_i))^2 + \lambda \int (g'')^2 \right\} $$
+    $f^*$ can allways be replaced with a natural spline, resulting in a smaller penalty, without changing the value of the residual sum of squares.
+  \end{block}
+\end{frame}
+%
+%
+\begin{frame}
+  Our charecterization of the solution to the roughness penalty problem shows that the method resolves the final two issues we uncovered with polynomial regression:
+\end{frame}
+%
+%
+\begin{frame}
+  Because the solutions are linear outside of the range of data, they are much less likely to show extreme edge effects.
+\end{frame}
+%
+%
+\begin{frame}
+  Because a solution can potentially have knots at any of the data points, it can adapt to changes without necesserilly affecting the fit at more remote data points.
+\end{frame}
