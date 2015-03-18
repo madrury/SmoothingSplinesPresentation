@@ -1,0 +1,73 @@
+\section{Exercises}
+%
+%
+\begin{frame}
+  Complete the proof that interpolating curves of minimum roughness are interpolating splines.  For guidence, see ex. ... Hastie ...
+\end{frame}
+%
+%
+\begin{frame}
+  Recreate the plot of the Reinsch basis.  What is so special about this basis?
+\end{frame}
+%
+%
+\begin{frame}
+  The \textbf{smoothing} matrix is defined by:
+  $$ S_{\lambda} = \mathbf{\Sigma} ( \mathbf{\Sigma}^t \mathbf{\Sigma} + \lambda \mathbf{\Omega} )^{-1} \mathbf{\Sigma}^t $$
+  Show that $S_{\lambda}$ earns its name, because it smoothes out y:
+  $$ \hat{y} = S_{\lambda} y $$
+\end{frame}
+%
+%
+\begin{frame}
+  Argue that, while $\mathbf{\Sigma}$ and $\mathbf{\Omega}$ both depend on the choice of basis,  $S_{\lambda}$ depends on only $\lambda$ and the sequence of knots.
+\end{frame}
+%
+%
+\begin{frame}
+  Show that $S_{\lambda}$ is a symmetric matrix, and hence has a full set of eigenvalues, all of whom are real numbers (don't worry about that last part unless you are up for some pain).
+\end{frame}
+%
+%
+\begin{frame}
+  Show that $S_{\lambda}$ is non-negative definate matrix, which means that:
+  $$ \left< S_{\lambda} v, v \right> \geq 0 $$
+for every vector v (here, angle brackets denote the usual dot product of vectors).
+
+  As a consequence, all the eigenvalues of $S_{\lambda}$ are non-negative real numbers.
+\end{frame}
+%
+%
+\begin{frame}
+  By using the Reinsch basis, show that the smoothing matrix can be written as:
+  $$ S_{\lambda} = (I + \lambda K)^{-1} $$
+where the matrix $K$ depends only on the sequence of knots.
+\end{frame}
+%
+%
+\begin{frame}
+  Show that $K$ is non-negative definate.
+\end{frame}
+%
+%
+\begin{frame}
+  Show that all the eigenvalues of $S_{\lambda}$ are in the interval $[0, 1]$.  Such matricies are called \textbf{shrinking}.
+\end{frame}
+%
+%
+\begin{frame}
+  Let $v_0, v_1, \ldots, v_n$ be a basis of eigenvalues for $S_{\lambda}$, ordered so that the corresponding eigenvalues are in decreasing order: 
+  
+  $$1 \geq \lambda_0 \geq \lambda_1 \geq \ldots \geq \lambda_n $$.
+
+  Show that $\lambda_0 = \lambda_1 = 1$, by arguing that the eigenspace spanned by $v_0$ and $v_1$ can be thought of as the space of lines (whcih are, in particular, natural splines).  To do this, consider identifying a vector $v$ with the interpolating natural spline determined by $v$.
+\end{frame}
+%
+%
+\begin{frame}
+  For the remaining eigenvalues, argue that $\lambda_i > \lambda_j$ if and only if:
+  $$ \int (\sigma_{v_i}'')^2 < \int (\sigma_{v_j}'')^2 $$
+where $\sigma_v$ is the interpolating spline defined by a vector $v$.
+
+  This justifies the comment at the end of the talk proper, that the roughness penalty tends to shrink basis elements of greater complexity more than those of less complexity.
+\end{frame}
