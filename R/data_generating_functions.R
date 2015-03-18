@@ -16,7 +16,10 @@ make_plotting_data <- function(low=.02, high=1) {
 }
 
 make_interpolation_data <- function() {
-  data.frame(x=c(.2, .4, .6, .8), y=c(.5, .75, .25, .6))
+  data.frame(
+    x=seq(.1428, .8571, length=6),
+    y=c(.2, .8, .4, .6, .2, .8)
+  )
 }
 
 make_polynomial_data <- function(d, raw_training_data) {
@@ -80,4 +83,15 @@ make_fitted_polynomial_values_big_hump <- function(d) {
   plotting_data <- make_polynomial_data(d=d, plotting_data)
   y_hat <- predict(line_model, newdata=plotting_data)
   y_hat
+}
+
+make_reinsch_basis_values <- function(knots) {
+  basis = data.frame(row.names=1:length(make_plotting_data()))
+  for(knot in knots) {
+    pegs <- data.frame(x=knots, y=0)
+    pegs$y[which(pegs$x == knot)] <- 1
+    basis_spline <- make_interpolating_spline_values(pegs)
+    basis <- cbind(basis, basis_spline)
+  }
+  basis
 }

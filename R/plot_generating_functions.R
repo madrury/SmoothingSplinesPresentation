@@ -69,3 +69,30 @@ make_interpolating_spline_plot <- function() {
   plotting_data$fitted_values <- make_interpolating_spline_values(make_interpolation_data())
   geom_line(data=plotting_data, aes(x=x, y=fitted_values))
 }
+
+make_reinsch_basis_plot <- function(knots) {
+  basis_splines <- make_reinsch_basis_values(knots)
+  plotting_x_vector <- make_plotting_data()
+  # Melt the data data frame containing the basis so that we can use facet
+  # in ggplot.
+  plotting_data_frame <- data.frame(
+    x=plotting_x_vector,
+    y=basis_splines[,1],
+    basis_elem=1
+  )
+  for(i in 2:ncol(basis_splines)) {
+    # Graft on another basis element to the bottom.
+    plotting_data_frame <- rbind(
+      plotting_data_frame,
+      data.frame(x=plotting_x_vector, y=basis_splines[,i], basis_elem=i)
+    )
+  }
+  p <- (ggplot() + geom_line(data=plotting_data_frame, aes(x=x, y=y))
+                 + facet_wrap(~ basis_elem)
+                 + geom_vline(xintercept=knots, alpha=.25)
+                 + theme(strip.background = element_blank(),
+                         strip.text.x = element_blank()
+                  )
+  )
+  p
+}
