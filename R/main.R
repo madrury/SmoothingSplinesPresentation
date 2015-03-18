@@ -87,8 +87,8 @@ save_plot(p, "interpolating_spline.png")
 
 # linear_parts_of_spline.png
 # A natural interpolating spline with the linear part highlighted
-p <- (ggplot() + make_vertical_fill_plot(xmin=-Inf, xmax=.2)
-               + make_vertical_fill_plot(xmin=.8, xmax=Inf)
+p <- (ggplot() + make_vertical_fill_plot(xmin=-Inf, xmax=1/7)
+               + make_vertical_fill_plot(xmin=6/7, xmax=Inf)
                + make_interpolating_vlines_plot()
                + make_interpolating_spline_plot()
                + make_interpolating_data_plot()
@@ -106,3 +106,42 @@ p <- (ggplot() + make_vertical_fill_plot(xmin=.2, xmax=.4)
 )
 save_plot(p, "cubic_parts_of_spline.png")
 
+# first_part_of_spline.png
+# A natural interpolating spline with the first section highlighted
+p <- (ggplot() + make_vertical_fill_plot(xmin=-Inf, xmax=.2)
+      + make_interpolating_vlines_plot()
+      + make_interpolating_spline_plot()
+      + make_interpolating_data_plot()
+)
+save_plot(p, "first_part_of_spline.png")
+
+# middle_part_of_spline.png
+# A natural interpolating spline with a middle section highlighted
+p <- (ggplot() + make_vertical_fill_plot(xmin=.2, xmax=.6)
+      + make_interpolating_vlines_plot()
+      + make_interpolating_spline_plot()
+      + make_interpolating_data_plot()
+)
+save_plot(p, "middle_part_of_spline.png")
+
+# last_cubic_part_of_spline.png
+# A natural interpolating spline with the second to last part highlighted
+p <- (ggplot() + make_vertical_fill_plot(xmin=.6, xmax=.8)
+      + make_interpolating_vlines_plot()
+      + make_interpolating_spline_plot()
+      + make_interpolating_data_plot()
+)
+save_plot(p, "last_cubic_part_of_spline.png")
+
+# last_part_of_spline.png
+# A natural interpolating spline with the last section highlighted
+p <- (ggplot() + make_vertical_fill_plot(xmin=.8, xmax=Inf)
+      + make_interpolating_vlines_plot()
+      + make_interpolating_spline_plot()
+      + make_interpolating_data_plot()
+)
+save_plot(p, "last_part_of_spline.png")
+
+even_knots <- 0:10 / 10
+p <- make_reinsch_basis_plot(knots=even_knots[2:10])
+save_plot(p, "reinsch_basis.png")
