@@ -44,12 +44,11 @@
     The \textbf{roughness} of a curve (defined by a function $f(x)$) is defined by:
     $$ \mathcal{R}(g) = \int (g''(x))^2 $$
   \end{block}
-  The limits of integration are often clear from context.
 \end{frame}
 %
 %
 \begin{frame}
-  The roughness measure can be used to solve out first issue, for we can now state, and concievably solve, the constrained optimization problem:
+  The roughness measure can be used to solve the first issue with polynomial regression, for we can now state, and concievably solve, the constrained optimization problem:
   \begin{block}{Problem: Constrained Roughness}
     $$ f_R^* = \argmin_{g} \left\{ \sum_i (x_i - g(x_i))^2 \mid \mathcal{R}(g) = R \right\} $$
   \end{block}
