@@ -28,20 +28,27 @@
 \end{frame}
 %
 \begin{frame}
-  Finally, polynomial fits often show extreme edge effects, as they extrapolate a high degree curve beyond the bounds of the data:
-   \begin{figure}
-    \includegraphics[scale=0.1]{cubic_endpoint_behaviour}
-  \end{figure}
+  \begin{columns}
+    \column{.7\textwidth}
+      \begin{figure}
+        \includegraphics[scale=0.12]{cubic_endpoint_behaviour}
+      \end{figure}
+    \column{.3\textwidth}
+      Finally, polynomial fits often show edge effects, as they extrapolate a high degree curve beyond the bounds of the data:
+  \end{columns}
 \end{frame}
 %
 \begin{frame}
-  The effect can be extreme for high dimensional fits:
-  \begin{figure}
-    \includegraphics[scale=0.1]{high_degree_endpoint_behaviour}
-  \end{figure}
+  \begin{columns}
+    \column{.7\textwidth}
+      \begin{figure}
+        \includegraphics[scale=0.12]{high_degree_endpoint_behaviour}
+      \end{figure}
+    \column{.3\textwidth}
+      The effect can be extreme for high dimensional fits:
+  \end{columns}
 \end{frame}
 %
 \begin{frame}
   The remainder of this talk will motivate and outline a general purpose method that resolves all of these issues.
 \end{frame}	
-
