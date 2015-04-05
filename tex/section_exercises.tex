@@ -20,17 +20,12 @@
 %
 %
 \begin{frame}
-  Argue that, while $\mathbf{\Sigma}$ and $\mathbf{\Omega}$ both depend on the choice of basis,  $S_{\lambda}$ depends on only $\lambda$ and the sequence of knots.
-\end{frame}
-%
-%
-\begin{frame}
   Show that $S_{\lambda}$ is a symmetric matrix, and hence has a full set of eigenvalues, all of whom are real numbers (don't worry about that last part unless you are up for some pain).
 \end{frame}
 %
 %
 \begin{frame}
-  Show that $S_{\lambda}$ is non-negative definate matrix, which means that:
+  Show that $S_{\lambda}$ is non-negative definite matrix, which means that:
   $$ \left< S_{\lambda} v, v \right> \geq 0 $$
 for every vector v (here, angle brackets denote the usual dot product of vectors).
 
@@ -46,7 +41,7 @@ where the matrix $K$ depends only on the sequence of knots.
 %
 %
 \begin{frame}
-  Show that $K$ is non-negative definate.
+  Show that $K$ is non-negative definite.
 \end{frame}
 %
 %
@@ -58,9 +53,9 @@ where the matrix $K$ depends only on the sequence of knots.
 \begin{frame}
   Let $v_0, v_1, \ldots, v_n$ be a basis of eigenvalues for $S_{\lambda}$, ordered so that the corresponding eigenvalues are in decreasing order: 
   
-  $$1 \geq \lambda_0 \geq \lambda_1 \geq \ldots \geq \lambda_n $$.
+  $$1 \geq \lambda_0 \geq \lambda_1 \geq \cdots \geq \lambda_n $$
 
-  Show that $\lambda_0 = \lambda_1 = 1$, by arguing that the eigenspace spanned by $v_0$ and $v_1$ can be thought of as the space of lines (whcih are, in particular, natural splines).  To do this, consider identifying a vector $v$ with the interpolating natural spline determined by $v$.
+  Show that $\lambda_0 = \lambda_1 = 1$, by arguing that the eigenspace spanned by $v_0$ and $v_1$ can be thought of as the space of lines (which are, in particular, natural splines).  To do this, consider identifying a vector $v$ with the interpolating natural spline determined by $v$ using the Reinsch basis.
 \end{frame}
 %
 %

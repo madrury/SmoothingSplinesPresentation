@@ -35,13 +35,13 @@
 %
 %
 \begin{frame}
-  Bendyness of a curve is an informal notion that roughly corresponds to the total ammount that the curve changes direction.
+  Bendyness of a curve is an informal notion that roughly corresponds to the total amount that the curve changes direction.
 \end{frame}
 %
 %
 \begin{frame}
   \begin{block}{Definition}
-    The \textbf{roughness} of a curve (defined by a function $f(x)$) is defined by:
+    The \textbf{roughness} of a curve (defined by a function $g(x)$) is defined by:
     $$ \mathcal{R}(g) = \int (g''(x))^2 $$
   \end{block}
 \end{frame}
@@ -155,13 +155,13 @@ with knots at some subsequence of the data points.
   \begin{block}{Intuition for Miracle}
     Given a proposed solution to:
     $$ f_{\lambda}^* = \argmin_{g} \left\{ \sum_i (x_i - g(x_i))^2 + \lambda \int (g'')^2 \right\} $$
-    $f^*$ can allways be replaced with a natural spline, resulting in a smaller penalty, without changing the value of the residual sum of squares.
+    $f^*$ can always be replaced with a natural spline, resulting in a smaller penalty, without changing the value of the residual sum of squares.
   \end{block}
 \end{frame}
 %
 %
 \begin{frame}
-  Our charecterization of the solution to the roughness penalty problem shows that the method resolves the final two issues we uncovered with polynomial regression:
+  Our characterization of the solution to the roughness penalty problem shows that the method resolves the final two issues we uncovered with polynomial regression:
 \end{frame}
 %
 %
@@ -171,5 +171,5 @@ with knots at some subsequence of the data points.
 %
 %
 \begin{frame}
-  Because a solution can potentially have knots at any of the data points, it can adapt to changes without necesserilly affecting the fit at more remote data points.
+  Because a solution can potentially have knots at any of the data points, it can adapt to changes without necessarily affecting the fit at more remote data points.
 \end{frame}

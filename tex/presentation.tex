@@ -5,6 +5,17 @@
 \usepackage{graphicx}
 \graphicspath{ {/Users/matthewdrury/Presentations/smoothing_splines/plots/} }
 
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\bias}{bias}
 \DeclareMathOperator*{\var}{var}
@@ -21,11 +32,12 @@
   \titlepage
 \end{frame}
 %
-%\include{outline}
-%\include{section_1} % Smoothing One Dimensional Data
-%\include{section_2} % The Problems with Polynomials
-%\include{section_3} % Curves of Minimum Roughness
-%\include{section_4} % Fitting Natural Splines
+\include{outline}
+\include{section_1} % Smoothing One Dimensional Data
+\include{section_2.5} % Fitting Polynomials
+\include{section_2} % The Problems with Polynomials
+\include{section_3} % Curves of Minimum Roughness
+\include{section_4} % Fitting Natural Splines
 \include{section_exercises} % Final Exercises
 %
 \end{document}

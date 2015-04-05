@@ -2,7 +2,7 @@
 %
 %
 \begin{frame}
-  Since we know that the solution to our optimization problem, must be a natural cubic spline, we can restate the problem as a search over a smaller set of curves:
+  Since we know that the solution to our optimization problem must be a natural cubic spline, we can restate the problem as a search over a smaller set of curves:
   \begin{block}{Problem: Unonstrained, Roughness Penalty}
     $$ f_{\lambda}^* = \argmin_{s} \left\{ \sum_i (x_i - s(x_i))^2 + \lambda \int (s'')^2 \mid s \in \natsplines \right\} $$
   \end{block}
@@ -10,7 +10,7 @@
 %
 %
 \begin{frame}
-  The is actaully a huge simplification, because $\natsplines$ is an infinitely smaller set to search over than "all curves with second derivatives".
+  This is actaully a huge simplification, because $\natsplines$ is an infinitely smaller set to search over than ``all curves with second derivatives".
 \end{frame}
 %
 %
@@ -75,9 +75,17 @@
 %
 %
 \begin{frame}
-  The upshot is that $\natsplines$ has a basis.  That is, there is a set of $n$ \textbf{fixed and specific} splines, so that any other spline can be written in exactly one was as a sum:
+  The upshot is that $\natsplines$ has a basis.  That is, there is a (in fact, many) set(s) of $n$ \textbf{fixed and specific} splines, so that any spline can be written in exactly one was as a sum:
   $$ s = \sum_{i=1}^n \alpha_i \sigma_i $$
-where each $\alpha_i$ is just a number and each $\sigma_i$ is a specific cubic spline.
+where each $\alpha_i$ is just a number and each $\sigma_i$ is a specific cubic spline in the basis.
+\end{frame}
+%
+%
+\begin{frame}
+  Another way to think of a basis is as a fixed way of associating a vector of numbers to a natural spline:
+  $$ s \mapsto (\alpha_1, \alpha_2, \ldots, \alpha_n) $$
+And in the opposite way, a natural spline to a vector of real numbers:
+  $$ (\alpha_1, \alpha_2, \ldots, \alpha_n) \mapsto \sum \alpha_i \sigma_i $$
 \end{frame}
 %
 %
@@ -91,7 +99,7 @@ where each $\alpha_i$ is just a number and each $\sigma_i$ is a specific cubic s
     \column{.75\textwidth}
       \includegraphics[scale=0.12]{reinsch_basis}
     \column{.25\textwidth}
-      For example, here we have poltted the Reinsch basis for the natural splines with knots at $\{ .1, .2, \ldots, .9\}$
+      For example, here we have plotted the Reinsch basis for the natural splines with knots at $\{ .1, .2, \ldots, .9\}$
   \end{columns}
 \end{frame}
 %
@@ -109,7 +117,7 @@ where each $\alpha_i$ is just a number and each $\sigma_i$ is a specific cubic s
 \begin{frame}
   We can now break down our problem one step further, instead of focusing on finding the optimal spline, let's think in terms of the \textit{coefficients of that optimal spline when written in terms of a fixed basis}.
     $$ s_{\alpha} = \sum_{i=1}^{n} \alpha_i \sigma_i $$
-    $$ f_{\lambda}^* = s_{\alpha} = \argmin_{\alpha} \left\{ \sum_i (x_i - s_{\alpha}(x_i)) + \lambda \int (s_{\alpha}'')^2 \right\} $$
+    $$ f_{\lambda}^* = s_{\alpha} = \argmin_{\alpha} \left\{ \sum_i (x_i - s_{\alpha}(x_i))^2 + \lambda \int (s_{\alpha}'')^2 \right\} $$
 \end{frame}
 %
 %

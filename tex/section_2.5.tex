@@ -1,0 +1,36 @@
+\section{Fitting Polynomials}
+%
+\begin{frame}
+  It's worth quickly reviewing how polynomial regressions are fit, if only to
+  introduce some notation in a familiar context.
+\end{frame}
+%
+\begin{frame}
+  First, we specify a fixed collection of polynomials that \textbf{spans}
+  $\mathcal{C}_d$.  A popular choice is:
+  $$ p_0(x) = 1, p_1(x) = x, p_2(x) = x^2, \ldots, p_n(x) = x^n $$
+\end{frame}
+%
+\begin{frame}
+  This isnt the only choice, sometimes we center the data first:
+  $$ p_0(x) = 1, p_1(x) = x - \mu, \ldots, p_n(x) = (x - \mu)^n $$
+\end{frame}
+%
+\begin{frame}
+  There are even more exotic choices, software that shall not be named defaults
+  to \textbf{orthogonal polynomials}.
+\end{frame}
+%
+\begin{frame}
+  Once we have the basis fixed, we make the matrix:
+  $$ X = \left( p_j(x_i) \right) $$
+  And then solve the least squares problem:
+  $$ \hat{\beta} = \argmin_{\beta} \left\{ \sum_i (y - X \beta)^t (y - X \beta)
+  \right\} $$
+\end{frame}
+%
+\begin{frame}
+  The solution to the least squares problem is found by differentiating and
+  setting to zero.  Working out the arithmetic, you get:
+  $$ \hat{\beta} = (X^t X)^{-1} X^t y  $$
+\end{frame}
