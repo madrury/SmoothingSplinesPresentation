@@ -97,9 +97,7 @@ save_plot(p, "linear_parts_of_spline.png")
 
 # cubic_parts_of_spline.png
 # A natural interpolating spline with the cubic parts highlighted
-p <- (ggplot() + make_vertical_fill_plot(xmin=.2, xmax=.4)
-      + make_vertical_fill_plot(xmin=.4, xmax=.6)
-      + make_vertical_fill_plot(xmin=.6, xmax=.8)
+p <- (ggplot() + make_vertical_fill_plot(xmin=1/7, xmax=6/7)
       + make_interpolating_vlines_plot()
       + make_interpolating_spline_plot()
       + make_interpolating_data_plot()
@@ -108,7 +106,7 @@ save_plot(p, "cubic_parts_of_spline.png")
 
 # first_part_of_spline.png
 # A natural interpolating spline with the first section highlighted
-p <- (ggplot() + make_vertical_fill_plot(xmin=-Inf, xmax=.2)
+p <- (ggplot() + make_vertical_fill_plot(xmin=-Inf, xmax=1/7)
       + make_interpolating_vlines_plot()
       + make_interpolating_spline_plot()
       + make_interpolating_data_plot()
@@ -117,7 +115,7 @@ save_plot(p, "first_part_of_spline.png")
 
 # middle_part_of_spline.png
 # A natural interpolating spline with a middle section highlighted
-p <- (ggplot() + make_vertical_fill_plot(xmin=.2, xmax=.6)
+p <- (ggplot() + make_vertical_fill_plot(xmin=1/7, xmax=5/7)
       + make_interpolating_vlines_plot()
       + make_interpolating_spline_plot()
       + make_interpolating_data_plot()
@@ -126,7 +124,7 @@ save_plot(p, "middle_part_of_spline.png")
 
 # last_cubic_part_of_spline.png
 # A natural interpolating spline with the second to last part highlighted
-p <- (ggplot() + make_vertical_fill_plot(xmin=.6, xmax=.8)
+p <- (ggplot() + make_vertical_fill_plot(xmin=5/7, xmax=6/7)
       + make_interpolating_vlines_plot()
       + make_interpolating_spline_plot()
       + make_interpolating_data_plot()
@@ -135,7 +133,7 @@ save_plot(p, "last_cubic_part_of_spline.png")
 
 # last_part_of_spline.png
 # A natural interpolating spline with the last section highlighted
-p <- (ggplot() + make_vertical_fill_plot(xmin=.8, xmax=Inf)
+p <- (ggplot() + make_vertical_fill_plot(xmin=6/7, xmax=Inf)
       + make_interpolating_vlines_plot()
       + make_interpolating_spline_plot()
       + make_interpolating_data_plot()
