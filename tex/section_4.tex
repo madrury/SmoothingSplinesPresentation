@@ -175,5 +175,13 @@ And in the opposite way, a natural spline to a vector of real numbers:
 %
 %
 \begin{frame}
-  By analogy, the roughness penalty shrinks the interpolating spline fit through all the data points in an intelegent way.  Essentially the "high frequency" terms in a basis are shrunk more than the "low frequency" terms, reducing the complexity of the interpolating spline.
+  By analogy, the roughness penalty shrinks the full interpolating spline fit in an intelegent way.  Essentially the ``high frequency'' terms in a basis are shrunk more than the ``low frequency'' terms, reducing the complexity of the interpolating spline.
+\end{frame}
+%
+%
+\begin{frame}
+  The ``a basis'' in the previous slide is a special one: an eigenbasis of the quadratic form $\mathbf{\Omega}$.  Here's a picture of a few such eigenvectors (eigensplines) in that basis (taken from Hastie, Tibshirani and Friedman):
+  \begin{figure}
+    \includegraphics[scale=.5]{hastie_eigenvalues}
+  \end{figure}
 \end{frame}
