@@ -3,14 +3,14 @@
 %
 \begin{frame}
   Since we know that the solution to our optimization problem must be a natural cubic spline, we can restate the problem as a search over a smaller set of curves:
-  \begin{block}{Problem: Unonstrained, Roughness Penalty}
+  \begin{block}{Problem: Unconstrained, Roughness Penalty}
     $$ f_{\lambda}^* = \argmin_{s} \left\{ \sum_i (x_i - s(x_i))^2 + \lambda \int (s'')^2 \mid s \in \natsplines \right\} $$
   \end{block}
 \end{frame}
 %
 %
 \begin{frame}
-  This is actaully a huge simplification, because $\natsplines$ is an infinitely smaller set to search over than ``all curves with second derivatives".
+  This is actaully a huge simplification, because $\natsplines$ is an infinitely smaller set to search over than ``all curves with second derivatives''.
 \end{frame}
 %
 %
@@ -75,7 +75,7 @@
 %
 %
 \begin{frame}
-  The upshot is that $\natsplines$ has a basis.  That is, there is a (in fact, many) set(s) of $n$ \textbf{fixed and specific} splines, so that any spline can be written in exactly one was as a sum:
+  The upshot is that $\natsplines$ has a basis.  That is, there is a (in fact, many) set(s) of $n$ \textbf{fixed and specific} splines, so that any spline can be written in \textbf{exactly one way} as a sum:
   $$ s = \sum_{i=1}^n \alpha_i \sigma_i $$
 where each $\alpha_i$ is just a number and each $\sigma_i$ is a specific cubic spline in the basis.
 \end{frame}
@@ -109,7 +109,7 @@ And in the opposite way, a natural spline to a vector of real numbers:
     \column{.75\textwidth}
       \includegraphics[scale=0.12]{reinsch_basis}
     \column{.25\textwidth}
-      The Reinsch basis is quite special, and working with it makes may properties of cubic splines much more apparant.
+      The Reinsch basis is quite special, and working with it makes many properties of cubic splines much more apparent.
   \end{columns}
   
 \end{frame}
@@ -128,9 +128,7 @@ And in the opposite way, a natural spline to a vector of real numbers:
 %
 \begin{frame}
   We can write the sum of squares term in matrix form by introducing:
-  
-  $$ \mathbf{\Sigma} = \left( \sigma_i (x_j) \right) $$
-  
+  $$ \mathbf{\Sigma} = \left( \sigma_j (x_i) \right) $$
   This simply evaluates every spline in the basis at every knot, and so is square matrix.
 \end{frame}
 %

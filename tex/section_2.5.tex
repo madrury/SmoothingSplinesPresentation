@@ -6,13 +6,14 @@
 \end{frame}
 %
 \begin{frame}
-  First, we specify a fixed collection of polynomials that \textbf{spans}
+  First, we specify a \textbf{basis}, a fixed collection of polynomials that \textbf{spans}
   $\mathcal{C}_d$.  A popular choice is:
   $$ p_0(x) = 1, p_1(x) = x, p_2(x) = x^2, \ldots, p_n(x) = x^n $$
+  The important property of this set (for now) is that each degree of polynomial is represented.
 \end{frame}
 %
 \begin{frame}
-  This isnt the only choice, sometimes we center the data first:
+  Here's another choice of basis, we center the data:
   $$ p_0(x) = 1, p_1(x) = x - \mu, \ldots, p_n(x) = (x - \mu)^n $$
 \end{frame}
 %
@@ -33,4 +34,11 @@
   The solution to the least squares problem is found by differentiating and
   setting to zero.  Working out the arithmetic, you get:
   $$ \hat{\beta} = (X^t X)^{-1} X^t y  $$
+\end{frame}
+%
+\begin{frame}
+  To control overfitting, you can add a regularization term to the least squares problem:
+  $$ \hat{\beta} = \argmin_{\beta} \left\{ (y - X \beta)^t (y - X \beta) + \lambda \beta^t \beta \right\} $$
+  Which can be solved in the same way, resulting in:
+  $$ \hat{\beta} = (X^t X + \lambda I)^{-1} X^t y $$
 \end{frame}
